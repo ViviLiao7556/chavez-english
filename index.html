@@ -4,238 +4,336 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>新竹康橋-小二英文課文</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{
-  font-family:'Segoe UI','Microsoft JhengHei','PingFang TC',sans-serif;
-  background:#f3f4f8;display:flex;height:100vh;overflow:hidden;
+  font-family:'Nunito','Noto Sans TC','Microsoft JhengHei','PingFang TC',sans-serif;
+  background:#f0f2f5;display:flex;height:100vh;overflow:hidden;
+  color:#1a1a2e;
 }
 
-/* ── Sidebar ── */
+/* ══════════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════════ */
 #sidebar{
-  width:268px;min-width:268px;
-  background:linear-gradient(180deg,#5b21b6 0%,#4c1d95 55%,#2e1065 100%);
+  width:288px;min-width:288px;
+  background:linear-gradient(180deg,#1e1245 0%,#16213e 50%,#0f172a 100%);
   color:#fff;display:flex;flex-direction:column;
-  height:100vh;box-shadow:4px 0 18px rgba(0,0,0,.28);
+  height:100vh;
+  box-shadow:3px 0 24px rgba(0,0,0,.35);
+  position:relative;z-index:5;
 }
-.s-hdr{padding:20px 18px 14px;border-bottom:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18)}
-.s-title{font-size:.95rem;font-weight:700;line-height:1.4;letter-spacing:.3px}
-.s-sub{font-size:.68rem;opacity:.6;margin-top:4px}
-.cat-tabs{display:flex;gap:8px;padding:13px 14px 0}
-.cat-tab{
-  flex:1;padding:7px 4px;border-radius:20px;font-weight:700;
-  font-size:.82rem;letter-spacing:1px;text-align:center;cursor:pointer;
-  color:rgba(255,255,255,.65);border:2px solid rgba(255,255,255,.2);
-  transition:all .2s;user-select:none;
-}
-.cat-tab:hover{color:#fff;background:rgba(255,255,255,.1)}
-.cat-tab.active{color:#5b21b6;background:#fff;border-color:#fff}
-.art-list{flex:1;overflow-y:auto;padding:10px 10px}
-.art-card{
-  display:flex;align-items:center;gap:9px;padding:10px 12px;
-  border-radius:10px;cursor:pointer;margin-bottom:5px;
-  color:rgba(255,255,255,.82);background:rgba(255,255,255,.07);
-  border:1px solid rgba(255,255,255,.08);transition:all .2s;
-}
-.art-card:hover{background:rgba(255,255,255,.16);color:#fff;transform:translateX(3px)}
-.art-card.active{background:#fff;color:#5b21b6;font-weight:600}
-.art-icon{font-size:1.3rem;flex-shrink:0;line-height:1}
-.art-name{font-size:.84rem;line-height:1.35}
-.s-foot{padding:10px 18px;text-align:center;opacity:.5;font-size:.7rem;border-top:1px solid rgba(255,255,255,.1)}
 
-/* ── Main area ── */
-#main{flex:1;display:flex;flex-direction:column;overflow:hidden}
+/* Brand header */
+.s-hdr{
+  padding:24px 22px 18px;
+  background:linear-gradient(135deg,#7c3aed 0%,#6d28d9 60%,#4f46e5 100%);
+  box-shadow:0 3px 12px rgba(109,40,217,.4);
+}
+.s-logo{
+  display:flex;align-items:center;gap:11px;margin-bottom:2px;
+}
+.s-logo-icon{
+  width:40px;height:40px;background:rgba(255,255,255,.2);
+  border-radius:11px;display:flex;align-items:center;justify-content:center;
+  font-size:1.35rem;flex-shrink:0;
+  border:1.5px solid rgba(255,255,255,.3);
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.s-title{font-size:1.05rem;font-weight:800;line-height:1.35;letter-spacing:.2px}
+.s-sub{font-size:.74rem;color:rgba(255,255,255,.65);margin-top:6px;letter-spacing:.6px}
+
+/* Category tabs */
+.cat-tabs{display:flex;gap:8px;padding:16px 14px 8px}
+.cat-tab{
+  flex:1;padding:10px 4px;border-radius:10px;font-weight:700;
+  font-size:.88rem;letter-spacing:.8px;text-align:center;cursor:pointer;
+  color:rgba(255,255,255,.4);border:1.5px solid rgba(255,255,255,.1);
+  transition:all .2s;user-select:none;background:transparent;
+}
+.cat-tab:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.07)}
+.cat-tab.active{
+  color:#fff;background:linear-gradient(135deg,#7c3aed,#6d28d9);
+  border-color:rgba(139,92,246,.6);
+  box-shadow:0 4px 14px rgba(109,40,217,.5);
+}
+
+/* Article list */
+.art-list{flex:1;overflow-y:auto;padding:6px 12px 14px}
+.art-list::-webkit-scrollbar{width:3px}
+.art-list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:3px}
+.art-list-section{
+  font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.28);padding:12px 6px 6px;
+}
+.art-card{
+  display:flex;align-items:center;gap:11px;
+  padding:12px 13px;border-radius:12px;cursor:pointer;
+  margin-bottom:4px;color:rgba(255,255,255,.6);
+  transition:all .18s;border:1px solid transparent;
+}
+.art-card:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.92)}
+.art-card.active{
+  background:linear-gradient(135deg,rgba(124,58,237,.35),rgba(99,102,241,.25));
+  color:#fff;font-weight:700;
+  border-color:rgba(139,92,246,.4);
+  box-shadow:0 2px 10px rgba(109,40,217,.2);
+}
+.art-icon{
+  width:38px;height:38px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;border-radius:10px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.08);
+}
+.art-card.active .art-icon{
+  background:rgba(139,92,246,.3);
+  border-color:rgba(139,92,246,.4);
+}
+.art-name{font-size:.92rem;line-height:1.4;letter-spacing:.01em}
+.s-foot{
+  padding:13px 20px;text-align:center;
+  color:rgba(255,255,255,.22);font-size:.72rem;
+  border-top:1px solid rgba(255,255,255,.07);letter-spacing:.4px;
+}
+
+/* ══════════════════════════════════════════
+   MAIN AREA
+══════════════════════════════════════════ */
+#main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#f0f2f5}
 .story-view{display:none;flex-direction:column;height:100%;overflow:hidden}
 .story-view.active{display:flex}
 
-/* Hero banner */
+/* ── Hero Banner ── */
 .story-hero{
-  flex-shrink:0;padding:22px 120px 18px 28px;
+  flex-shrink:0;
+  padding:26px 130px 22px 30px;
   position:relative;overflow:hidden;
+  min-height:120px;
 }
-/* soft radial glow behind the emoji card */
-.story-hero::before{
-  content:'';position:absolute;
-  right:0;top:0;width:180px;height:100%;
-  background:radial-gradient(ellipse at 88% 50%,rgba(255,255,255,.22) 0%,transparent 65%);
-  pointer-events:none;
+/* subtle dark vignette for text contrast */
+.story-hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(100deg,rgba(0,0,0,.18) 0%,transparent 60%);
 }
-/* frosted-glass emoji card */
+/* big decorative emoji */
 .hero-deco{
-  position:absolute;right:22px;top:50%;transform:translateY(-50%);
-  width:82px;height:82px;
-  background:rgba(255,255,255,.22);
-  border:2px solid rgba(255,255,255,.38);
-  border-radius:20px;
+  position:absolute;right:18px;top:50%;transform:translateY(-50%);
+  width:88px;height:88px;
+  background:rgba(255,255,255,.18);
+  border:2px solid rgba(255,255,255,.32);
+  border-radius:22px;
   display:flex;align-items:center;justify-content:center;
-  font-size:3rem;line-height:1;
-  box-shadow:0 4px 20px rgba(0,0,0,.15),inset 0 1px 0 rgba(255,255,255,.35);
+  font-size:3.2rem;line-height:1;
+  box-shadow:0 6px 24px rgba(0,0,0,.18),inset 0 1px 0 rgba(255,255,255,.3);
+  z-index:1;
 }
-/* sparkle accents on the emoji card */
 .hero-deco::before{
-  content:'✨';
-  position:absolute;top:-13px;right:-5px;
-  font-size:1.1rem;line-height:1;pointer-events:none;
+  content:'✨';position:absolute;top:-12px;right:-4px;
+  font-size:1rem;pointer-events:none;
 }
 .hero-deco::after{
-  content:'⭐';
-  position:absolute;bottom:-11px;left:-7px;
-  font-size:.95rem;line-height:1;pointer-events:none;
+  content:'⭐';position:absolute;bottom:-10px;left:-6px;
+  font-size:.9rem;pointer-events:none;
 }
 .hero-badge{
-  display:inline-block;font-size:.67rem;font-weight:700;
-  letter-spacing:2px;background:rgba(255,255,255,.28);
-  padding:3px 10px;border-radius:7px;margin-bottom:9px;color:#fff;
+  position:relative;z-index:1;
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  background:rgba(255,255,255,.2);backdrop-filter:blur(6px);
+  padding:4px 12px;border-radius:20px;margin-bottom:10px;color:#fff;
+  border:1px solid rgba(255,255,255,.28);
 }
 .hero-title{
-  font-size:1.55rem;font-weight:800;color:#fff;
-  text-shadow:0 2px 10px rgba(0,0,0,.22);line-height:1.25;
+  position:relative;z-index:1;
+  font-size:1.6rem;font-weight:800;color:#fff;
+  text-shadow:0 2px 12px rgba(0,0,0,.28);line-height:1.2;
 }
-.hero-meta{font-size:.8rem;color:rgba(255,255,255,.75);margin-top:6px}
+.hero-meta{
+  position:relative;z-index:1;
+  font-size:.76rem;color:rgba(255,255,255,.72);margin-top:7px;letter-spacing:.3px;
+}
 
 /* ── Story body ── */
 .story-body{
-  flex:1;overflow-y:auto;padding:26px 32px 40px;
-  background:#fff;scroll-behavior:smooth;
+  flex:1;overflow-y:auto;
+  padding:28px 36px 52px;
+  background:#f0f2f5;
+  scroll-behavior:smooth;
 }
+.story-body::-webkit-scrollbar{width:5px}
+.story-body::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:5px}
+.story-body::-webkit-scrollbar-thumb:hover{background:#9ca3af}
 
-/* Chapter heading  (Chapter N – Title) */
+/* reading content max-width for comfort */
+.reading-wrap{max-width:760px;margin:0 auto}
+
+/* ── Chapter heading ── */
 .chap-hdr{
-  font-size:.98rem;font-weight:700;color:#fff;
-  padding:9px 16px;border-radius:7px;
-  margin:26px 0 14px;
-  box-shadow:0 2px 8px rgba(0,0,0,.1);
+  font-size:.78rem;font-weight:700;color:#fff;letter-spacing:.8px;
+  text-transform:uppercase;
+  padding:7px 16px;border-radius:20px;
+  margin:28px 0 16px;display:inline-block;
+  box-shadow:0 3px 10px rgba(0,0,0,.15);
 }
 .chap-hdr:first-child{margin-top:0}
 
-/* Sub-heading  (food names, section titles) */
+/* ── Sub-heading ── */
 .sub-hdr{
   font-size:1rem;font-weight:700;
-  padding:5px 14px;margin:20px 0 11px;
-  border-left:4px solid;border-radius:0 6px 6px 0;
+  padding:0 0 8px;margin:22px 0 14px;
+  border-bottom:2px solid;
 }
-.sub-hdr.cet{background:#f5f3ff;color:#5b21b6;border-left-color:#7c3aed}
-.sub-hdr.fet{background:#eff6ff;color:#1d4ed8;border-left-color:#3b82f6}
+.sub-hdr.cet{color:#5b21b6;border-bottom-color:#8b5cf6}
+.sub-hdr.fet{color:#1e40af;border-bottom-color:#3b82f6}
 
-/* Paragraph */
+/* ── Paragraph card ── */
 .para{
-  margin-bottom:12px;padding:10px 14px 10px 16px;
-  border-left:3px solid #ddd6fe;border-radius:0 7px 7px 0;
-  background:#fafaff;transition:border-color .15s,background .15s;
+  margin-bottom:10px;padding:14px 18px 12px;
+  border-radius:12px;
+  background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
+  transition:box-shadow .2s,transform .15s;
 }
-.para:hover{border-left-color:#7c3aed;background:#f5f3ff}
-.para.fet{border-left-color:#bfdbfe;background:#f8fbff}
-.para.fet:hover{border-left-color:#3b82f6;background:#eff6ff}
+.para:hover{
+  box-shadow:0 4px 16px rgba(0,0,0,.09);
+  transform:translateY(-1px);
+}
 .en{
-  font-size:1.08rem;color:#1e1b4b;font-weight:500;
-  line-height:1.75;margin-bottom:3px;
+  font-size:1.2rem;color:#111827;font-weight:500;line-height:1.9;
+  letter-spacing:.01em;
 }
-.zh{font-size:.92rem;color:#7c3aed;line-height:1.6}
-.zh.fet{color:#1d4ed8}
+.zh{
+  font-size:.97rem;color:#6b7280;line-height:1.75;
+  padding-top:7px;margin-top:6px;
+  border-top:1px solid #f3f4f6;
+}
 
-/* ── Vocab word list ── */
-.vocab-section{margin-bottom:28px}
+/* ══════════════════════════════════════════
+   VOCAB WORD LIST
+══════════════════════════════════════════ */
+.vocab-section{margin-bottom:32px}
 .vocab-week{
-  font-size:.82rem;font-weight:700;letter-spacing:1px;
-  color:#fff;background:linear-gradient(90deg,#6d28d9,#8b5cf6);
-  padding:5px 14px;border-radius:6px;margin-bottom:12px;
-  display:inline-block;
+  display:block;
+  font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:#7c3aed;padding-bottom:9px;margin-bottom:14px;
+  border-bottom:2px solid #ede9fe;
 }
-.vocab-grid{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.vocab-week.fet{color:#1d4ed8;border-bottom-color:#dbeafe}
+.vocab-grid{display:flex;flex-wrap:wrap;gap:8px}
 .vocab-card{
-  display:inline-flex;align-items:baseline;gap:5px;
-  padding:7px 12px;border-radius:20px;
-  background:#f5f3ff;border:1.5px solid #ddd6fe;
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 14px;border-radius:10px;
+  background:#fff;border:1.5px solid #e5e7eb;
   cursor:default;transition:all .15s;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
 }
-.vocab-card:hover{background:#ede9fe;border-color:#a78bfa;transform:translateY(-1px)}
-.vocab-card.fet{background:#eff6ff;border-color:#bfdbfe}
-.vocab-card.fet:hover{background:#dbeafe;border-color:#93c5fd}
-.v-word{font-size:.95rem;font-weight:600;color:#3730a3}
-.v-word.fet{color:#1e40af}
+.vocab-card:hover{
+  border-color:#a78bfa;transform:translateY(-2px);
+  box-shadow:0 4px 12px rgba(109,40,217,.12);
+}
+.vocab-card.fet:hover{border-color:#93c5fd;box-shadow:0 4px 12px rgba(59,130,246,.12)}
+.v-word{font-size:.93rem;font-weight:600;color:#111827}
 .v-pos{
-  font-size:.72rem;color:#fff;background:#a78bfa;
-  padding:1px 6px;border-radius:8px;font-weight:600;
+  font-size:.67rem;color:#fff;background:#8b5cf6;
+  padding:2px 7px;border-radius:6px;font-weight:600;letter-spacing:.2px;
 }
-.v-pos.fet{background:#60a5fa}
+.v-pos.fet{background:#3b82f6}
 
-/* ── Vocab highlight in stories ── */
+/* ══════════════════════════════════════════
+   VOCAB HIGHLIGHT IN STORY TEXT
+══════════════════════════════════════════ */
 .vh{
-  font-weight:700;color:#5b21b6;
+  font-weight:700;color:#6d28d9;
+  background:rgba(109,40,217,.07);
+  padding:1px 3px;border-radius:4px;
   text-decoration:underline dotted #a78bfa;
-  text-underline-offset:2px;
+  text-underline-offset:3px;
   cursor:help;position:relative;
 }
-.vh.fet{color:#1d4ed8;text-decoration-color:#93c5fd}
+.vh.fet{color:#1d4ed8;background:rgba(29,78,216,.07);text-decoration-color:#93c5fd}
 
 /* Tooltip */
 .vh::after{
   content:attr(data-tip);
-  position:absolute;bottom:calc(100% + 7px);left:50%;
+  position:absolute;bottom:calc(100% + 8px);left:50%;
   transform:translateX(-50%);
-  background:#1e1b4b;color:#fff;
-  padding:5px 11px;border-radius:7px;
-  font-size:.76rem;font-weight:500;white-space:nowrap;
+  background:#111827;color:#e5e7eb;
+  padding:6px 13px;border-radius:8px;
+  font-size:.74rem;font-weight:500;white-space:nowrap;
   opacity:0;pointer-events:none;
   transition:opacity .15s;z-index:200;
-  box-shadow:0 4px 12px rgba(0,0,0,.25);
+  box-shadow:0 8px 24px rgba(0,0,0,.3);
   letter-spacing:.2px;
 }
-/* 小箭頭 */
 .vh::before{
-  content:'';position:absolute;bottom:calc(100% + 1px);left:50%;
+  content:'';position:absolute;bottom:calc(100% + 2px);left:50%;
   transform:translateX(-50%);
-  border:5px solid transparent;border-top-color:#1e1b4b;
+  border:5px solid transparent;border-top-color:#111827;
   opacity:0;pointer-events:none;transition:opacity .15s;z-index:201;
 }
 .vh:hover::after,.vh:hover::before{opacity:1}
 
-/* Empty state */
+/* ══════════════════════════════════════════
+   EMPTY STATE
+══════════════════════════════════════════ */
 .no-story{
   flex:1;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  color:#b0b8cc;text-align:center;gap:10px;
+  color:#9ca3af;text-align:center;gap:14px;
+  background:#f0f2f5;
+}
+.no-story-icon{
+  width:72px;height:72px;background:#e5e7eb;
+  border-radius:20px;display:flex;align-items:center;
+  justify-content:center;font-size:2.2rem;
 }
 
-/* ── iPad / Mobile ── */
-#topbar{
-  display:none;align-items:center;gap:10px;
-  padding:11px 16px;flex-shrink:0;
-  background:linear-gradient(90deg,#5b21b6 0%,#4c1d95 100%);
-  color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2);
-}
-#topbar-title{
-  font-size:.92rem;font-weight:600;flex:1;
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.hamburger{
-  background:none;border:none;color:#fff;
-  font-size:1.6rem;cursor:pointer;padding:2px 6px;
-  line-height:1;border-radius:6px;
-  -webkit-tap-highlight-color:transparent;
-}
-.hamburger:active{background:rgba(255,255,255,.15)}
+/* ══════════════════════════════════════════
+   MOBILE / IPAD
+══════════════════════════════════════════ */
 #sidebar-overlay{
   display:none;position:fixed;inset:0;
-  background:rgba(0,0,0,.45);z-index:9;
+  background:rgba(0,0,0,.5);z-index:9;
+  backdrop-filter:blur(2px);
 }
+#topbar{
+  display:none;align-items:center;gap:12px;
+  padding:0 16px;height:54px;flex-shrink:0;
+  background:#16213e;color:#fff;
+  box-shadow:0 2px 12px rgba(0,0,0,.2);
+}
+.hamburger{
+  background:none;border:none;color:rgba(255,255,255,.8);
+  font-size:1.4rem;cursor:pointer;padding:6px;
+  line-height:1;border-radius:7px;
+  -webkit-tap-highlight-color:transparent;transition:background .15s;
+}
+.hamburger:hover,.hamburger:active{background:rgba(255,255,255,.1)}
+#topbar-title{
+  font-size:.9rem;font-weight:600;flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+
 @media(max-width:960px){
-  body{flex-direction:column;}
-  #topbar{display:flex;}
+  body{flex-direction:column}
+  #topbar{display:flex}
   #sidebar{
-    position:fixed;left:0;top:0;height:100vh;
-    transform:translateX(-100%);
-    transition:transform .25s ease;
-    z-index:10;
+    position:fixed;left:0;top:0;height:100dvh;
+    transform:translateX(-100%);transition:transform .26s ease;z-index:10;
   }
-  #sidebar.open{transform:translateX(0);}
-  #sidebar-overlay.open{display:block;}
-  .story-hero{padding:16px 100px 14px 20px;}
-  .hero-deco{width:70px;height:70px;font-size:2.5rem;right:16px;}
-  .hero-title{font-size:1.25rem;}
-  .story-body{padding:18px 18px 32px;}
-  .para{padding:8px 12px 8px 14px;}
-  .en{font-size:1rem;}
+  #sidebar.open{transform:translateX(0)}
+  #sidebar-overlay.open{display:block}
+  #main{height:calc(100dvh - 54px)}
+  .story-hero{padding:18px 110px 16px 20px;min-height:100px}
+  .hero-deco{width:78px;height:78px;font-size:2.8rem;right:14px}
+  .hero-title{font-size:1.3rem}
+  .story-body{padding:18px 18px 40px}
+  .para{padding:12px 14px 10px}
+  .en{font-size:1.05rem}
 }
 </style>
 </head>
@@ -274,7 +372,8 @@ body{
     <div class="hero-title">🪔 Happy Diwali</div>
     <div class="hero-meta">92 句 · 3 章 &nbsp;·&nbsp; EN + 中文</div>
   </div>
-  <div class="story-body"><div class="chap-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">Chapter 1 – Decorating for Diwali</div>
+  <div class="story-body"><div class="reading-wrap">
+<div class="chap-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">Chapter 1 – Decorating for Diwali</div>
 <div class="para"><div class="en">My name is Minisha, and I celebrate Diwali.</div><div class="zh">我叫 Minisha，我慶祝排燈節。</div></div>
 <div class="para"><div class="en">I am in the diversity club at my school.</div><div class="zh">我在學校的多元文化社團。</div></div>
 <div class="para"><div class="en">My teacher, Mrs. Arnold, asked me to do the Diwali decorations this year.</div><div class="zh">我的老師 Arnold 太太請我今年負責排燈節的裝飾。</div></div>
@@ -368,7 +467,8 @@ body{
 <div class="para"><div class="en">We all get together.</div><div class="zh">我們集合。</div></div>
 <div class="para"><div class="en">Mrs. Arnold holds up her camera.</div><div class="zh">老師舉起相機。</div></div>
 <div class="para"><div class="en">“Now say ‘Happy Diwali!’ everyone!”</div><div class="zh">大家說 Happy Diwali！</div></div>
-<div class="para"><div class="en">“Happy Diwali!” we all shout.</div><div class="zh">我們一起喊 Happy Diwali！</div></div></div>
+<div class="para"><div class="en">“Happy Diwali!” we all shout.</div><div class="zh">我們一起喊 Happy Diwali！</div></div>
+</div></div>
 </div>
 <div class="story-view" id="story-CET-1">
   <div class="story-hero" style="background:linear-gradient(135deg,#fccb90 0%,#d57eeb 100%)">
@@ -377,7 +477,8 @@ body{
     <div class="hero-title">🏀 Milos Basketball</div>
     <div class="hero-meta">107 句 · 3 章 &nbsp;·&nbsp; EN + 中文</div>
   </div>
-  <div class="story-body"><div class="chap-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">Chapter 1</div>
+  <div class="story-body"><div class="reading-wrap">
+<div class="chap-hdr" style="background:linear-gradient(135deg,#5b21b6,#7c3aed)">Chapter 1</div>
 <div class="sub-hdr cet">The Missing Basketball</div>
 <div class="para"><div class="en">Milo woke up filled with excitement.</div><div class="zh">米洛醒來時充滿了興奮。</div></div>
 <div class="para"><div class="en">It was Saturday.</div><div class="zh">那天是星期六。</div></div>
@@ -489,7 +590,8 @@ body{
 <div class="para"><div class="en">“I’ve got my favorite basketball.”</div><div class="zh">「我有我最喜歡的籃球。」</div></div>
 <div class="para"><div class="en">“Yes! I was going to ask you to play,” Abina said.</div><div class="zh">「好啊！我本來就想找你打球，」阿比娜說。</div></div>
 <div class="para"><div class="en">“Your basketball is the best!”</div><div class="zh">「你的籃球是最棒的！」</div></div>
-<div class="para"><div class="en">Then Milo and Abina played basketball for hours because, after all, that’s what friends  do.</div><div class="zh">然後米洛和阿比娜打了好幾個小時的籃球，因為朋友就是會這樣互相陪伴。</div></div></div>
+<div class="para"><div class="en">Then Milo and Abina played basketball for hours because, after all, that’s what friends  do.</div><div class="zh">然後米洛和阿比娜打了好幾個小時的籃球，因為朋友就是會這樣互相陪伴。</div></div>
+</div></div>
 </div>
 <div class="story-view" id="story-CET-2">
   <div class="story-hero" style="background:linear-gradient(135deg,#ff9a9e 0%,#fecfef 100%)">
@@ -507,7 +609,8 @@ body{
     <div class="hero-title">🎁 Anna's Surprise</div>
     <div class="hero-meta">78 句 · 5 章 &nbsp;·&nbsp; EN + 中文</div>
   </div>
-  <div class="story-body"><div class="chap-hdr" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6)">Chapter 1 – A Special Day</div>
+  <div class="story-body"><div class="reading-wrap">
+<div class="chap-hdr" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6)">Chapter 1 – A Special Day</div>
 <div class="para fet"><div class="en">Today we have a special lunch.</div><div class="zh fet">今天我們有一個特別的午餐。</div></div>
 <div class="para fet"><div class="en">My class is going to learn about food from different countries.</div><div class="zh fet">我們班要學習來自不同國家的食物。</div></div>
 <div class="para fet"><div class="en">Five students brought food that they eat.</div><div class="zh fet">五位學生帶來他們平常吃的食物。</div></div>
@@ -591,7 +694,8 @@ body{
 <div class="para fet"><div class="en">Place it in a bag and freeze it.</div><div class="zh fet">放入袋中冷凍。</div></div>
 <div class="para fet"><div class="en">Put the milk, banana, and blueberries in a blender.</div><div class="zh fet">把牛奶、香蕉和藍莓放入果汁機。</div></div>
 <div class="para fet"><div class="en">Blend until smooth.</div><div class="zh fet">攪拌至順滑。</div></div>
-<div class="para fet"><div class="en">Pour into cups and enjoy.</div><div class="zh fet">倒入杯中享用。</div></div></div>
+<div class="para fet"><div class="en">Pour into cups and enjoy.</div><div class="zh fet">倒入杯中享用。</div></div>
+</div></div>
 </div>
 <div class="story-view" id="story-FET-1">
   <div class="story-hero" style="background:linear-gradient(135deg,#43e97b 0%,#38f9d7 100%)">
@@ -600,7 +704,8 @@ body{
     <div class="hero-title">🌿 The Abenaki</div>
     <div class="hero-meta">83 句 · 9 章 &nbsp;·&nbsp; EN + 中文</div>
   </div>
-  <div class="story-body"><div class="chap-hdr" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6)">Chapter 1</div>
+  <div class="story-body"><div class="reading-wrap">
+<div class="chap-hdr" style="background:linear-gradient(135deg,#1d4ed8,#3b82f6)">Chapter 1</div>
 <div class="para fet"><div class="en">Who are the Abenaki?</div><div class="zh fet">（阿本納基人是誰？）</div></div>
 <div class="para fet"><div class="en">The Abenaki are a group of Native Americans.</div><div class="zh fet">阿本納基人是一群美洲原住民。</div></div>
 <div class="para fet"><div class="en">Their homeland is the Northeast.</div><div class="zh fet">他們的家鄉在東北部。</div></div>
@@ -693,7 +798,8 @@ body{
 <div class="para fet"><div class="en">It teaches that it is good to be thankful.</div><div class="zh fet">文化教導他們要懂得感恩。</div></div>
 <div class="para fet"><div class="en">It teaches that it is good to respect nature and one's elders.</div><div class="zh fet">文化也教導他們要尊重大自然與長者。</div></div>
 <div class="para fet"><div class="en">Knowing their ways from long ago is a source of pride.</div><div class="zh fet">了解他們古老的生活方式是他們的驕傲來源。</div></div>
-<div class="para fet"><div class="en">These traditions help the Abenaki stay proud of their culture and their history.</div><div class="zh fet">這些傳統幫助阿本納基人對自己的文化與歷史感到自豪。</div></div></div>
+<div class="para fet"><div class="en">These traditions help the Abenaki stay proud of their culture and their history.</div><div class="zh fet">這些傳統幫助阿本納基人對自己的文化與歷史感到自豪。</div></div>
+</div></div>
 </div>
 <div class="story-view" id="story-FET-2">
   <div class="story-hero" style="background:linear-gradient(135deg,#a18cd1 0%,#fbc2eb 100%)">
@@ -702,7 +808,8 @@ body{
     <div class="hero-title">👩 Who Says Women Can't Be Docors</div>
     <div class="hero-meta">109 句 &nbsp;·&nbsp; EN + 中文</div>
   </div>
-  <div class="story-body"><div class="para fet"><div class="en">Who says women can’t be doctors?</div><div class="zh fet">誰說女生不能當醫生？</div></div>
+  <div class="story-body"><div class="reading-wrap">
+<div class="para fet"><div class="en">Who says women can’t be doctors?</div><div class="zh fet">誰說女生不能當醫生？</div></div>
 <div class="para fet"><div class="en">I’ll bet you’ve met plenty of doctors in your life.</div><div class="zh fet">我敢打賭你一生中一定見過很多醫生。</div></div>
 <div class="para fet"><div class="en">And I’ll bet lots of them were women.</div><div class="zh fet">而且我也敢打賭其中很多是女生。</div></div>
 <div class="para fet"><div class="en">You might find this hard to believe,</div><div class="zh fet">你可能會覺得很難相信，</div></div>
@@ -810,7 +917,8 @@ body{
 <div class="para fet"><div class="en">One doctor even wrote,</div><div class="zh fet">甚至有一位醫生寫道：</div></div>
 <div class="para fet"><div class="en">“I hope for the honor of humanity that she will be the last.”</div><div class="zh fet">「為了人類的榮譽，我希望她是最後一位。」</div></div>
 <div class="para fet"><div class="en">But as you know,</div><div class="zh fet">但你知道的，</div></div>
-<div class="para fet"><div class="en">she certainly was not.</div><div class="zh fet">她當然不是最後一位。</div></div></div>
+<div class="para fet"><div class="en">she certainly was not.</div><div class="zh fet">她當然不是最後一位。</div></div>
+</div></div>
 </div>
 <div class="story-view" id="story-FET-3">
   <div class="story-hero" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)">
